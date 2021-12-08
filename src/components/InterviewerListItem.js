@@ -1,7 +1,7 @@
 import React from "react";
 
 export default function InterviewerListItem(props) {
-  retutn (
+  return (
     <li className="interviewers__item">
   <img
     className="interviewers__item-image"
