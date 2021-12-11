@@ -9,12 +9,13 @@ import axios from "axios";
 
 
 export default function Application(props) {
- 
+
   const [state, setState] = useState({
     day: "Monday",
-    days: [],
-    appointments: {}
+    days: []
   });
+
+  const setDay = (day) => setState({ ...state, day });
 
 useEffect(() => {
   axios.get("/api/days")
@@ -41,9 +42,7 @@ useEffect(() => {
         />
       </section>
       <section className="schedule">
-        {appointments.map((appointment) => (
-          <Appointment key={appointment.id} {...appointment} />
-        ))}
+        
         <Appointment id="last" time="5pm" />
       </section>
     </main>
