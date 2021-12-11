@@ -12,14 +12,28 @@ export default function Application(props) {
 
   const [state, setState] = useState({
     day: "Monday",
-    days: []
+    days: [],
+    appointments: {}
   });
+
+  const dailyAppointments = [];
 
   const setDay = (day) => setState({ ...state, day });
 
-useEffect(() => {
-  axios.get("/api/days")
-}, []);
+  useEffect(() => {
+    Promise.all([
+      axios.get("/api/days"),
+      axios.get("/api/appointments"),
+      axios.get("/api/interviewers"),
+    ]).then((response) => {
+      setState((prev) => ({
+        ...prev,
+        days: response[0].data,
+        appointments: response[1].data,
+        interviewers: response[2].data,
+      }));
+    });
+  }, []);
 
   //looping appointments mock data 
 
@@ -42,7 +56,9 @@ useEffect(() => {
         />
       </section>
       <section className="schedule">
-        
+        {dailyAppointments.map((appointment) => (
+          <Appointment key={appointment.id} {...appointment} />
+        ))}
         <Appointment id="last" time="5pm" />
       </section>
     </main>
