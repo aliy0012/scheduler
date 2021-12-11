@@ -2,7 +2,7 @@
 
 import "components/Application.scss";
 import DayList from "./DayList";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Appointment from "components/Appointment";
 
 import axios from "axios";
@@ -46,15 +46,17 @@ const appointments = [
   }
 ];
 
-const [days, setDays] = useState([]);
 
-useEffect(() => {
-  axios.get("/api/days")
-}, []);
 
 
 export default function Application(props) {
   const [day, setDay] = useState("Monday");
+
+  const [days, setDays] = useState([]);
+
+useEffect(() => {
+  axios.get("/api/days")
+}, []);
 
   //looping appointments mock data 
 
