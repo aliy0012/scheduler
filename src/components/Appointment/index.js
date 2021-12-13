@@ -6,6 +6,9 @@ import Empty from "./Empty";
 
 import useVisualMode from "hooks/useVisualMode";
 
+const EMPTY = "EMPTY";
+const SHOW = "SHOW";
+
 export default function Appointment(props) {
   return (
     <article className="appointment">
