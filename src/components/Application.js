@@ -68,7 +68,7 @@ export default function Application(props) {
       interview={interview}
     />
   );
-});
+
 
   useEffect(() => {
     Promise.all([
@@ -113,4 +113,3 @@ export default function Application(props) {
       </section>
     </main>
   );
-}
