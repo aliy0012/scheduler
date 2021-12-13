@@ -24,6 +24,11 @@ export default function Application(props) {
   const schedule = appointments.map((appointment) => {
   const interview = getInterview(state, appointment.interview);
 
+  setState({
+    ...state,
+    appointments
+  });
+
   function bookInterview(id, interview) {
     const appointment = {
       ...state.appointments[id],
@@ -34,11 +39,24 @@ export default function Application(props) {
       [id]: appointment,
     };
   
-  function save(name, interviewer) {
-    const interview = {
-      student: name,
-      interviewer
-    };
+    function save(name, interviewer) {
+      const interview = {
+        student: name,
+        interviewer,
+      };
+      transition(SAVING);
+      props
+        .bookInterview(props.id, interview)
+        .then(() => transition(SHOW))
+        .catch(() => transition(ERROR_SAVE, true));
+    }
+
+  function deleteAppointment() {
+    transition(DELETE, true);
+    props
+      .cancelInterview(props.id)
+      .then(() => transition(EMPTY))
+      .catch(() => transition(ERROR_DELETE, true));
   }
 
 
