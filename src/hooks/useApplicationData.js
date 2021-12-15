@@ -11,6 +11,7 @@ export default function useApplicationData() {
 
   const setDay = (day) => setState({ ...state, day });
 
+  //appointment id used to find it and allowing to book it
   function bookInterview(id, interview) {
     const appointment = {
       ...state.appointments[id],
@@ -36,6 +37,7 @@ export default function useApplicationData() {
     });
   }
 
+  //findin interview by id, and promting to cancel it
   function cancelInterview(id) {
     const appointment = {
       ...state.appointments[id],
@@ -58,6 +60,7 @@ export default function useApplicationData() {
     });
   }
 
+  //geting data from api server
   useEffect(() => {
     Promise.all([
       axios.get("http://localhost:8001/api/days"),

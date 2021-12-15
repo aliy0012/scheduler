@@ -8,12 +8,13 @@ export default function Form(props) {
   const [error, setError] = useState("");
 
 
+  //reseting input form
   const reset = () => {
     setName("");
     setInterviewer(null);
   };
 
-  
+  //calling reset and goback
   const cancel = () => {
     reset();
     props.onCancel();
