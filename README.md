@@ -15,7 +15,7 @@ Canceling interview
 Showing aviable spots after booking
 ![](https://github.com/aliy0012/scheduler/blob/master/public/images/4.png)
 
-Showing faded when no spots left
+Friday is faded when no spots left
 ![](https://github.com/aliy0012/scheduler/blob/master/public/images/5.png)
 
 
