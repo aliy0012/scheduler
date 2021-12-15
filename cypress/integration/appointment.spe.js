@@ -26,7 +26,7 @@ describe("Appointments", () => {
 
     cy.contains("Save").click();
 
-    cy.contains(".appointment__card--show", "YTD");
+    cy.contains(".appointment__card--show", "AA");
     cy.contains(".appointment__card--show", "Sylvia Palmer");
   });
 
@@ -37,3 +37,4 @@ describe("Appointments", () => {
     cy.contains(".appointment__card--show", "Archie Cohen").should("not.exist");
   });
 });
+
