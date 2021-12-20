@@ -32,7 +32,7 @@ export default function useApplicationData() {
         return day;
       }
     });
-    return axios.put(`http://localhost:8001/api/appointments/${id}`, appointment).then(() => {
+    return axios.put(`/api/appointments/${id}`, appointment).then(() => {
       setState({ ...state, appointments, days });
     });
   }
@@ -55,7 +55,7 @@ export default function useApplicationData() {
         return day;
       }
     });
-    return axios.delete(`http://localhost:8001/api/appointments/${id}`, appointment).then(() => {
+    return axios.delete(`/api/appointments/${id}`, appointment).then(() => {
       setState({ ...state, appointments, days });
     });
   }
@@ -63,9 +63,9 @@ export default function useApplicationData() {
   //geting data from api server
   useEffect(() => {
     Promise.all([
-      axios.get("http://localhost:8001/api/days"),
-      axios.get("http://localhost:8001/api/appointments"),
-      axios.get("http://localhost:8001/api/interviewers"),
+      axios.get("/api/days"),
+      axios.get("/api/appointments"),
+      axios.get("/api/interviewers"),
     ]).then((response) => {
       setState((prev) => ({
         ...prev,
